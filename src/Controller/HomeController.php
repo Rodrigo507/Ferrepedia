@@ -22,6 +22,12 @@ class HomeController extends AbstractController
      * @Route ("/datos/{nombre}",name="datos",defaults={"nombre":"rodrigo"})
      */
     public function datos($nombre): Response{
+        if ($this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY')) {
+        return $this->render('security/login.html.twig');
+            // Render the login form
+        }else{
+
         return $this->render('home/datos.html.twig',compact('nombre'));
+        }
     }
 }

@@ -10,11 +10,13 @@
 
 <div class="example-wrapper">
     <h1>Hello DATOS</h1>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>Email: {{ app.user.email }}</p>
+    {% endif %}
 
-    This friendly message is coming from:
     <ul>
         <li><a href="{{ path('home') }}">Home</a></li>
     </ul>
-    <h1>{{ nombre }}</h1>
+
 </div>
 {% endblock %}
